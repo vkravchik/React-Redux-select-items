@@ -13,7 +13,7 @@ class UserList extends React.Component {
     showList(users) {
         return users.map((user) => {
             return (
-                <li onClick={() => {this.props.selectCar(user)}} key={user.id}>{user.name}</li>
+                <li onClick={() => {this.props.selectUser(user)}} key={user.id}>{user.name}</li>
             );
         })
     }
@@ -32,6 +32,6 @@ const mapStateToProps = state => ({ users: state.user });
 
 
 const mapDispatchToProps = dispatch =>
-    bindActionCreators({ requestGetUserList }, dispatch);
+    bindActionCreators({ requestGetUserList, selectUser: requestGetUser }, dispatch);
 
 export default connect(mapStateToProps, mapDispatchToProps)(UserList)

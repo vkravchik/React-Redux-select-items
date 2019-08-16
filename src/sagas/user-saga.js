@@ -7,7 +7,8 @@ import {receiveGetUser, receiveGetUserList} from "../actions/user-actions";
 
 function* workerGetUser(action) {
     try {
-        const data = yield call(getUser);
+        const data = yield call(getUser, action.user);
+        console.log(data);
         yield put(receiveGetUser(data));
     } catch (e) {
         console.log(e);

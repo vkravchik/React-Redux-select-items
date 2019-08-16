@@ -6,7 +6,8 @@ const Car = () => {
     return (
         <div>
             <UserList/>
-            {/*<UserProfile/>*/}
+            <br/>
+            <UserProfile/>
         </div>
     )
 };

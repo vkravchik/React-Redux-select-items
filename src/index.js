@@ -7,8 +7,8 @@ import {applyMiddleware, createStore} from 'redux';
 import rootReducers from "./reducers";
 import {Provider} from 'react-redux';
 import createSagaMiddleware from 'redux-saga';
-import Car from "./components/Car";
 import {BrowserRouter, Route, Switch} from "react-router-dom";
+import Car from "./components/Car";
 import Navbar from "./components/Navbar";
 import User from "./components/User";
 import rootSaga from './sagas/index'

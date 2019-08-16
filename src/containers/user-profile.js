@@ -5,37 +5,29 @@ import {connect} from "react-redux";
 import {requestGetUser} from "../actions/user-actions";
 
 class UserProfile extends React.Component {
-    componentDidMount() {
-        this.props.requestGetUser();
-    }
 
-    person = (x, i) =>
-        <div key={x.id.value}>
-            <h1>
-                {x.gender}
-            </h1>
-            <h1>
-                {x.name.first}
-            </h1>
-            <h1>
-                {x.name.last}
-            </h1>
-            <img src={x.picture.medium} />
-        </div>;
+    showUserDetails(user) {
+        return (
+            <div>
+                <h3>{user.name}</h3>
+                <p>Website <i>{user.address && user.address.city}</i>, email is: <i>{user.email}</i></p>
+            </div>
+        );
+    }
 
     render() {
-        const { results = [] } = this.props.activeUser;
-        return results.length
-            ? <h1>
-                {results.map(this.person)}
-            </h1>
-            : <h1>loading...</h1>;
-    }
+        const {data = []} = this.props.activeUser;
+        return (
+            <div>
+                {this.showUserDetails(data)}
+            </div>
+        );
+    };
 }
 
-const mapStateToProps = state => ({ activeUser: state.user });
+const mapStateToProps = state => ({activeUser: state.activeUser});
 
 const mapDispatchToProps = dispatch =>
-    bindActionCreators({ requestGetUser }, dispatch);
+    bindActionCreators({requestGetUser}, dispatch);
 
 export default connect(mapStateToProps, mapDispatchToProps)(UserProfile);
