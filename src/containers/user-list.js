@@ -30,7 +30,6 @@ class UserList extends React.Component {
 
 const mapStateToProps = state => ({ users: state.user });
 
-
 const mapDispatchToProps = dispatch =>
     bindActionCreators({ requestGetUserList, selectUser: requestGetUser }, dispatch);
 

@@ -2,7 +2,7 @@ import React from "react";
 import UserProfile from "../containers/user-profile";
 import UserList from "../containers/user-list";
 
-const Car = () => {
+const User = () => {
     return (
         <div>
             <UserList/>
@@ -12,4 +12,4 @@ const Car = () => {
     )
 };
 
-export default Car;
+export default User;
