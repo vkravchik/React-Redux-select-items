@@ -3,10 +3,15 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-import {createStore, applyMiddleware} from 'redux';
+import {applyMiddleware, createStore} from 'redux';
 import rootReducers from "./reducers";
 import {Provider} from 'react-redux';
 import createSagaMiddleware from 'redux-saga';
+import Car from "./components/Car";
+import {BrowserRouter, Route, Switch} from "react-router-dom";
+import Navbar from "./components/Navbar";
+import User from "./components/User";
+import rootSaga from './sagas/index'
 
 const sagaMiddleware = createSagaMiddleware();
 const store = createStore(
@@ -14,11 +19,18 @@ const store = createStore(
     applyMiddleware(sagaMiddleware)
 );
 
-// sagaMiddleware.run(rootSaga);
+sagaMiddleware.run(rootSaga);
 
 ReactDOM.render(
     <Provider store={store}>
-        <App/>
+        <Navbar/>
+        <BrowserRouter>
+            <Switch>
+                <Route exact path="/" component={App}/>
+                <Route exact path="/autos" component={Car}/>
+                <Route exact path="/user" component={User}/>
+            </Switch>
+        </BrowserRouter>
     </Provider>
     , document.getElementById('root'));
 
